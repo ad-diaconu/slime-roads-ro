@@ -1,0 +1,18 @@
+.claude/skills/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Raw geodata (downloaded by scripts/download_data.py)
+data/raw/
+
+# Logs and large media
+logs/
+*.out
+*.err
+*.mp4
+outputs/**/*.gif
