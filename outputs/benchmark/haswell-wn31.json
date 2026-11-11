@@ -1,0 +1,15 @@
+{
+  "host": "haswell-wn31.grid.pub.ro",
+  "platform": "Linux-6.12.0-211.64.1.el10_2.x86_64-x86_64-with-glibc2.41",
+  "cpu_count": 32,
+  "slurm_job": "298051",
+  "workers": 32,
+  "sims": 96,
+  "steps": 2000,
+  "agents": 30000,
+  "single_sim_s": 6.84,
+  "mean_sim_s_in_pool": 13.57,
+  "wall_s": 41.0,
+  "sims_per_hour": 8420,
+  "ga_30x50_hours": 0.18
+}
