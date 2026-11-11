@@ -30,12 +30,19 @@ def mosaic(bounds=None, res_deg=None):
     return arr[0], transform
 
 
-def to_grid(grid, res_deg=1 / 240):
-    """DEM averaged onto a Grid (see slime.data.grid). Sea / no-data cells are NaN."""
+def to_grid(grid, res_deg=1 / 240, how=("average",)):
+    """DEM resampled onto a Grid (see slime.data.grid). No-data cells are NaN.
+
+    `how` lists rasterio resampling names; one array per name, e.g. ("average", "min").
+    "min" keeps the valley floor of each cell: a 2 km cell holding a narrow valley stays low.
+    """
     lon_w, lat_s, lon_e, lat_n = grid.bounds_lonlat(pad_deg=0.2)
     src, src_t = mosaic((lon_w, lat_s, lon_e, lat_n), res_deg=res_deg)
-    out = np.full(grid.shape, np.nan, dtype="float32")
-    reproject(src, out, src_transform=src_t, src_crs="EPSG:4326", src_nodata=np.nan,
-              dst_transform=grid.transform, dst_crs=grid.crs, dst_nodata=np.nan,
-              resampling=Resampling.average)
-    return out
+    outs = []
+    for name in how:
+        out = np.full(grid.shape, np.nan, dtype="float32")
+        reproject(src, out, src_transform=src_t, src_crs="EPSG:4326", src_nodata=np.nan,
+                  dst_transform=grid.transform, dst_crs=grid.crs, dst_nodata=np.nan,
+                  resampling=Resampling[name])
+        outs.append(out)
+    return outs[0] if len(outs) == 1 else outs

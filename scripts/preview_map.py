@@ -3,7 +3,6 @@
 Writes to outputs/validation/:
   map_overview.png   terrain on the 2 km grid (EPSG:3844) + motorway/trunk/primary + the 42 county seats
   map_checks.png     native-resolution zooms: DN1 up the Prahova Valley, DN7 through the Olt Gorge
-and data/processed/cities.csv (the 42 county seats with OSM coordinates and population).
 
 Usage:  uv run python scripts/preview_map.py
 """
@@ -25,7 +24,7 @@ OUT = OUTPUTS / "validation"
 ROAD_STYLE = {
     "motorway": ("#e8231c", 2.0),
     "trunk": ("#ffffff", 1.2),
-    "primary": ("#1f4fe0", 0.8),
+    "primary": ("#390147", 0.8),
 }
 DARKEN = 0.80  # multiply land colours: lower = darker map
 CHECKS = {  # (W, S, E, N) in degrees, the road that must follow the valley
@@ -183,8 +182,7 @@ def main():
         print(f"  ref {code}: {has_ref(roads['ref'], code).sum()} ways")
 
     t = time.time()
-    seats = osm.county_seats()
-    seats.to_csv(DATA_PROCESSED / "cities.csv", index=False)
+    seats = osm.county_seats()  # data/processed/cities.csv is written by scripts/build_grid.py
     print(
         f"cities: {len(seats)} county seats, population known for {seats.population.notna().sum()} "
         f"({time.time() - t:.0f}s)"

@@ -24,16 +24,17 @@ Format: `<owner>/<type>-<description>`
 
 One branch = one component or one experiment. Do not mix unrelated work.
 
-### Feature branches (stages from the plan)
+### Feature branches (build steps B1–B7 in BACKLOG.md)
 
-| Stage | Example |
-| --- | --- |
-| Data: cities, roads, terrain, shared grid | `andrei/data-align-dem-roads` |
-| Agent-based simulation with terrain cost | `andrei/sim-agent-terrain-cost` |
-| Graph extraction (threshold, skeletonize) | `andrei/eval-graph-extraction` |
-| Metrics (link F1, efficiency, fault tolerance) | `andrei/eval-link-f1` |
-| Genetic algorithm | `andrei/ga-tournament-elitism` |
-| Visualisation (live view, GIFs, overlays) | `andrei/viz-live-pygame` |
+| ID | Stage | Example |
+| --- | --- | --- |
+| B1 | Project setup and cluster | `andrei/infra-project-setup` |
+| B2 | Data: cities, roads, terrain, shared grid | `andrei/data-align-dem-roads` |
+| B3 | Agent-based simulation with terrain cost | `andrei/sim-agent-terrain-cost` |
+| B4 | Graph extraction (threshold, skeletonize) | `andrei/eval-graph-extraction` |
+| B5 | Metrics (link F1, efficiency, fault tolerance) | `andrei/eval-link-f1` |
+| B6 | Genetic algorithm | `andrei/ga-tournament-elitism` |
+| B7 | Visualisation (live view, GIFs, overlays) | `andrei/viz-live-pygame` |
 
 ### Experiment branches
 
@@ -84,8 +85,8 @@ Optional trailers: `Refs: E3`, `Metrics: link F1 0.62 ± 0.04`, `Config: <comman
 
 ## 5. Pull requests
 
-Every task lives as an issue in the [planner](https://github.com/users/ad-diaconu/projects/4); experiments are
-issues #1–#7 (E1–E7).
+Every task lives as an issue in the [planner](https://github.com/users/ad-diaconu/projects/4), synced from
+[BACKLOG.md](BACKLOG.md): experiments E1–E7 and build steps B1–B7.
 
 - **Title** in commit-message format, e.g. `exp(e1): flat vs relief with 5 seeds`.
 - **Description**: fill in the [PR template](.github/pull_request_template.md). Put the issue number in

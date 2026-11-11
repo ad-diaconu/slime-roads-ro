@@ -1,0 +1,15 @@
+{
+  "host": "Andrei",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu_count": 12,
+  "slurm_job": null,
+  "workers": 8,
+  "sims": 24,
+  "steps": 2000,
+  "agents": 30000,
+  "single_sim_s": 4.72,
+  "mean_sim_s_in_pool": 8.22,
+  "wall_s": 27.3,
+  "sims_per_hour": 3166,
+  "ga_30x50_hours": 0.47
+}

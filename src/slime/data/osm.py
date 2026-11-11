@@ -33,6 +33,30 @@ def load_places():
     return gdf[keep].reset_index(drop=True)
 
 
+def load_border():
+    """Romania's national boundary (admin_level 2) as one shapely geometry, EPSG:4326.
+
+    It includes the territorial sea; the land mask removes the sea using the DEM.
+    """
+    b = OSM(str(PBF)).get_boundaries(boundary_type="administrative")
+    b = b[b["admin_level"] == "2"]
+    if len(b) != 1:
+        raise ValueError(f"expected one admin_level=2 boundary, got {b['name'].tolist()}")
+    return b.geometry.iloc[0]
+
+
+def load_water():
+    """natural=water polygons (Danube, lakes, reservoirs, ...), EPSG:4326, with a `water` subtype."""
+    gdf = OSM(str(PBF)).get_data_by_custom_criteria(
+        custom_filter={"natural": ["water"]}, filter_type="keep",
+        keep_nodes=False, keep_ways=True, keep_relations=True,
+        extra_attributes=["water", "name"],
+    )
+    gdf = gdf[gdf.geometry.geom_type.isin(["Polygon", "MultiPolygon"])]
+    keep = [c for c in ("name", "water", "geometry") if c in gdf.columns]
+    return gdf[keep].reset_index(drop=True)
+
+
 def county_seats(places=None):
     """The 42 food sources: data/county_seats.csv matched by name to OSM city/town nodes."""
     seats = pd.read_csv(ROOT / "data" / "county_seats.csv")

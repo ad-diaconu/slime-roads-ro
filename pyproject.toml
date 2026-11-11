@@ -12,6 +12,7 @@ dependencies = [
     "networkx>=3.3",
     "scikit-image>=0.24",
     "pyyaml>=6.0",
+    "pandas>=2.2",
 ]
 
 [dependency-groups]
@@ -22,20 +23,24 @@ geo = [
     "geopandas>=1.0",
     "pyproj>=3.6",
     "shapely>=2.0",
-    "pandas>=2.2",
     "requests>=2.32",
 ]
+# Headless figures and video (also inside the cluster container, slurm/slime-roads.def).
 viz = [
     "matplotlib>=3.9",
-    "pygame>=2.6",
     "imageio>=2.34",
+    "imageio-ffmpeg>=0.5",
+]
+# Local only: the live pygame window needs a display.
+live = [
+    "pygame>=2.6",
 ]
 dev = [
     "pytest>=8.0",
 ]
 
 [tool.uv]
-default-groups = ["geo", "viz", "dev"]
+default-groups = ["geo", "viz", "live", "dev"]
 # The repo lives in OneDrive: copy files into .venv instead of hardlinking them from the uv cache.
 link-mode = "copy"
 
