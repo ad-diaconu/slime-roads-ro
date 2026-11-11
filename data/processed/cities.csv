@@ -1,0 +1,43 @@
+name,county,place,population,population:date,lat,lon
+București,București,city,1883425.0,,44.4361414,26.102684
+Alba Iulia,Alba,city,63536.0,,46.0682753,23.5664761
+Arad,Arad,city,159074.0,,46.1753793,21.3196342
+Pitești,Argeș,city,141275.0,2021-12-01,44.8572882,24.8721156
+Bacău,Bacău,city,144307.0,,46.5560493,26.9153557
+Oradea,Bihor,city,196367.0,,47.0549163,21.9285231
+Bistrița,Bistrița-Năsăud,city,75076.0,,47.1327012,24.4963949
+Botoșani,Botoșani,city,106847.0,,47.7450706,26.6599858
+Brăila,Brăila,city,180302.0,,45.2716092,27.9742932
+Brașov,Brașov,city,253200.0,,45.6525105,25.6105654
+Buzău,Buzău,city,115494.0,,45.1490064,26.8306557
+Călărași,Călărași,city,65181.0,,44.1961646,27.3313233
+Reșița,Caraș-Severin,city,73282.0,,45.289027,21.887861
+Cluj-Napoca,Cluj,city,324576.0,,46.769379,23.5899542
+Constanța,Constanța,city,283872.0,2011,44.1767161,28.6507598
+Sfântu Gheorghe,Covasna,city,56006.0,,45.8659935,25.7865367
+Târgoviște,Dâmbovița,city,79610.0,,44.9267709,25.462816
+Craiova,Dolj,city,269506.0,,44.3190159,23.7965614
+Galați,Galați,city,249432.0,,45.4338215,28.0549395
+Giurgiu,Giurgiu,city,61353.0,,43.8961275,25.9656448
+Târgu Jiu,Gorj,city,82504.0,,45.0422947,23.2728118
+Miercurea Ciuc,Harghita,city,33946.0,,46.3614042,25.8026675
+Deva,Hunedoara,city,61123.0,,45.8817402,22.9008611
+Slobozia,Ialomița,city,45891.0,,44.5635999,27.3618477
+Iași,Iași,city,290422.0,,47.1615598,27.5837814
+Buftea,Ilfov,town,17257.0,,44.5598204,25.9498918
+Baia Mare,Maramureș,city,123738.0,,47.6565584,23.5719843
+Drobeta-Turnu Severin,Mehedinți,city,92617.0,2011,44.6257835,22.6531975
+Târgu Mureș,Mureș,city,134290.0,,46.5446253,24.561196
+Piatra-Neamț,Neamț,city,79679.0,2023-01-31,46.9319894,26.3695046
+Slatina,Olt,city,70293.0,,44.4299971,24.3631837
+Ploiești,Prahova,city,224406.0,,44.9417468,26.0236504
+Zalău,Sălaj,city,56202.0,,47.1819416,23.0562143
+Satu Mare,Satu Mare,city,102411.0,,47.7891763,22.8725598
+Sibiu,Sibiu,city,147245.0,,45.7973912,24.1519202
+Suceava,Suceava,city,92121.0,,47.647001,26.2522599
+Alexandria,Teleorman,city,45434.0,,43.9702236,25.3288462
+Timișoara,Timiș,city,319279.0,,45.7538355,21.2257474
+Tulcea,Tulcea,city,73707.0,,45.177518,28.8016348
+Râmnicu Vâlcea,Vâlcea,city,98776.0,,45.1031731,24.3647209
+Vaslui,Vaslui,city,55407.0,,46.639394,27.7309515
+Focșani,Vrancea,city,97186.0,,45.697274,27.1856921
