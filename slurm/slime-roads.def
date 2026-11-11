@@ -1,0 +1,48 @@
+Bootstrap: docker
+From: python:3.12.12-slim-trixie
+# trixie, not bookworm: the cluster's unprivileged build injects its own fakeroot (built on RHEL 10), which needs
+# glibc >= 2.38; bookworm has 2.36 and %post fails with "GLIBC_2.38 not found".
+
+# Runtime for every cluster job: simulation, graph extraction, metrics, GA, baselines, headless figures / video.
+# CPU only (no CUDA). Packages are pinned to uv.lock through slurm/requirements-sif.txt; after changing
+# dependencies, regenerate that file (command below) and rebuild with slurm/build_sif.sh.
+#
+#   uv export --frozen --no-default-groups --group viz --group dev --no-hashes --no-emit-project \
+#       --no-header --format requirements-txt -o slurm/requirements-sif.txt
+#
+# What each package is for (the plan's T3-T7, E1-E7):
+#   numpy, numba          agent-based simulation (T3, E1, E6)
+#   scipy                 ndimage labels / distances, spatial KD-tree for the ~10 km matching, sparse (Tero model)
+#   scikit-image          skeletonize for graph extraction (T4), MCP_Geometric for the A* baseline (E7)
+#   networkx              city graph, shortest paths, efficiency, fault tolerance, MST (T5, E3, E4, E7)
+#   pandas, pyyaml        cities.csv, run configs
+#   matplotlib, imageio,  fitness curves, network figures, GIF / MP4 without a display
+#   imageio-ffmpeg
+#   pytest                run the test suite on the cluster
+# Not in here, on purpose: rasterio / pyrosm / geopandas (geodata is preprocessed locally into data/processed/)
+# and pygame (the live window needs a display).
+#
+# The project code is NOT baked in: jobs bind ~/slime-roads-ro and set PYTHONPATH=src (slurm/env.sh), so a code
+# change only needs cluster-sync, not a rebuild.
+
+%files
+    slurm/requirements-sif.txt /opt/slime/requirements.txt
+
+%post
+    pip install --no-cache-dir --upgrade pip
+    pip install --no-cache-dir -r /opt/slime/requirements.txt
+
+%environment
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    export MPLBACKEND=Agg
+
+%test
+    python -c "import numba, numpy, scipy, skimage, networkx, pandas, yaml, matplotlib, imageio_ffmpeg; print('sif ok: python', __import__('sys').version.split()[0], 'numba', numba.__version__, 'numpy', numpy.__version__)"
+
+%labels
+    project slime-roads-ro
+    python 3.12.12
+
+%help
+    apptainer exec --env PYTHONPATH=$HOME/slime-roads-ro/src slime-roads.sif python scripts/<entry>.py ...

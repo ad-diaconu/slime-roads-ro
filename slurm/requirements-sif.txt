@@ -1,0 +1,75 @@
+colorama==0.4.6 ; sys_platform == 'win32'
+    # via pytest
+contourpy==1.4.0
+    # via matplotlib
+cycler==0.12.1
+    # via matplotlib
+fonttools==4.68.0
+    # via matplotlib
+imageio==2.38.1
+    # via scikit-image
+imageio-ffmpeg==0.8.1
+iniconfig==2.3.1
+    # via pytest
+kiwisolver==1.5.1
+    # via matplotlib
+lazy-loader==0.6
+    # via scikit-image
+llvmlite==0.50.0
+    # via numba
+matplotlib==3.11.2
+networkx==3.7
+    # via
+    #   scikit-image
+    #   slime-roads-ro
+numba==0.68.1
+    # via slime-roads-ro
+numpy==2.5.4
+    # via
+    #   contourpy
+    #   imageio
+    #   matplotlib
+    #   numba
+    #   pandas
+    #   scikit-image
+    #   scipy
+    #   slime-roads-ro
+    #   tifffile
+packaging==26.3
+    # via
+    #   lazy-loader
+    #   matplotlib
+    #   pytest
+    #   scikit-image
+pandas==3.1.1
+    # via slime-roads-ro
+pillow==13.0.0
+    # via
+    #   imageio
+    #   matplotlib
+    #   scikit-image
+pluggy==1.7.0
+    # via pytest
+pygments==2.21.0
+    # via pytest
+pyparsing==3.3.3
+    # via matplotlib
+pytest==9.2.0
+python-dateutil==4.0.0
+    # via
+    #   matplotlib
+    #   pandas
+pyyaml==6.0.3
+    # via slime-roads-ro
+scikit-image==0.26.0
+    # via slime-roads-ro
+scipy==1.18.1
+    # via
+    #   scikit-image
+    #   slime-roads-ro
+tifffile==2026.11.8
+    # via scikit-image
+tzdata==2026.6
+    # via
+    #   pandas
+    #   python-dateutil
